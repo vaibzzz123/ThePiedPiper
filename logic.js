@@ -1,7 +1,7 @@
 const fs = require('fs');
 const io = require('socket.io-client');
-let dataFileObject = JSON.parse(fs.readFileSync('./data.txt', 'utf8')); //reads from data.txt file, and parses JSON to object
-const socket = io('http://localhost:3000/');
+let dataFileObject = JSON.parse(fs.readFileSync('./data.txt', 'utf8')); //reads synchronously from data.txt file, and parses JSON to object
+const socket = io('http://localhost:3000/'); //the location/port of our socket
 
 const update = (request) => {
     updateJsonFile(request);
@@ -29,9 +29,8 @@ const updateJsonFile = (newJson) => {
         }
     });
 
-    let msg = 'JSON file updated! new contents: ' + JSON.stringify(newJson); //string showing the changes made
+    const msg = 'JSON file updated! new contents: ' + JSON.stringify(newJson); //string showing the changes made
     socket.emit('update', msg);
-    // console.log('after io emit in updateJsonFile');
 }
 
 const getValue = (key) => {

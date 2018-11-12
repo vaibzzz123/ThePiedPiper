@@ -13,11 +13,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(bodyParser.text());
 
+//the 3 lines above are for parsing the body of a POST request
+
 io.on('connection', (socket) => {
 
-    socket.on('update', (msg) => {
-        console.log(msg);
-        io.emit('update', msg);
+    socket.on('update', (msg) => { //once message is received
+        console.log(msg); //console log the message
+        io.emit('update', msg); //emit message to all clients on update channel
     });
 
 });
