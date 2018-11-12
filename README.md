@@ -1,6 +1,6 @@
 # The Pied Piper
 
-This project is a server and API built with Node.js, Express.js, and Socket.IO frameworks and libraries. It is a simple server which has an API pertaining to modify a plaintext file.
+This project is a server and API built with Node.js, Express.js, and Socket.IO frameworks and libraries. It is a simple server which has an API for modifying a file with JSON in it, representing a database.
 
 ## Setup
 

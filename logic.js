@@ -3,13 +3,14 @@ const io = require('socket.io-client');
 let dataFileObject = JSON.parse(fs.readFileSync('./data.txt', 'utf8')); //reads synchronously from data.txt file, and parses JSON to object
 const socket = io('http://localhost:3000/'); //the location/port of our socket
 
+// console.log(dataFileObject);
+
 const update = (request) => {
     updateJsonFile(request);
 }
 
 const search = (reqBody) => {
-    const key = Object.keys(reqBody)[0]; //reqBody is object with 1 parameter, so we get keys array and convert index
-    return getValue(key);
+    return getValue(reqBody);
 }
 
 const updateDataObject = (newObject) => { //updates dataFileObject to have KVPs from newObject
